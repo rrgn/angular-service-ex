@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Good Job Service</title>
+    <script src="angular.js"></script>
+    <script>
+      var app = angular.module('app', []);
+      app.controller('SayHiController', function($scope, sayHi) {
+        $scope.sayHi = function(){
+          sayHi.hi('Hae');
+        };
+      });
+
+      app.factory('sayHi', function() {
+        return {
+          hi: function(person) {
+            if (!person) {
+              person = 'Bob';
+            }
+            console.log('Hi, ' + person + '!');
+          }
+        };
+      });
+    </script>
+  </head>
+  <body>
+    <button ng-app="app" ng-controller="SayHiController" ng-click="sayHi()">Say Hi!</button>
+  </body>
+</html>
